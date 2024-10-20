@@ -30,8 +30,18 @@ public class Main {
                     playlist.previous();
                     break;
                 case 3:
-                    // Implementar ordenação
-                    System.out.println("Função de ordenação ainda não implementada.");
+                    System.out.println("Escolha o critério de ordenação: 1 para título, 2 para artista");
+                    int sortOption = scanner.nextInt();
+                    scanner.nextLine();  // Consumir nova linha
+                    if (sortOption == 1) {
+                        playlist.sortBy("title");
+                        System.out.println("Playlist ordenada por título.");
+                    } else if (sortOption == 2) {
+                        playlist.sortBy("artist");
+                        System.out.println("Playlist ordenada por artista.");
+                    } else {
+                        System.out.println("Opção inválida!");
+                    }
                     break;
                 case 4:
                     playlist.playCurrent();

@@ -103,4 +103,29 @@ public class Playlist {
             temp = temp.next;
         }
     }
+
+    // Ordenar por título ou por artista
+    public void sortBy(String criterion) {
+        if (head == null) return;
+
+        for (Node i = head; i != null; i = i.next) {
+            Node min = i;
+            for (Node j = i.next; j != null; j = j.next) {
+                if (criterion.equalsIgnoreCase("title")) {
+                    if (j.data.getTitle().compareToIgnoreCase(min.data.getTitle()) < 0) {
+                        min = j;
+                    }
+                } else if (criterion.equalsIgnoreCase("artist")) {
+                    if (j.data.getArtist().compareToIgnoreCase(min.data.getArtist()) < 0) {
+                        min = j;
+                    }
+                }
+            }
+            if (min != i) {
+                Music temp = i.data;
+                i.data = min.data;
+                min.data = temp;
+            }
+        }
+    }
 }
